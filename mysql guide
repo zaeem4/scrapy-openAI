@@ -1,0 +1,13 @@
+create database by name legaldocs
+
+add table law_urls and blog_urls
+
+create table law_urls(
+ id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ url VARCHAR(400) NOT NULL,
+ country VARCHAR(2),
+ priority TINYINT NOT NULL,
+ date_crawled TIMESTAMP DEFAULT NULL,
+ 
+ UNIQUE (url)
+)
