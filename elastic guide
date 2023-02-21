@@ -1,0 +1,43 @@
+install elastic search through below link
+1) must change the version to latest.
+  for lastest version check https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
+  
+2) follow the guide.
+  https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-elasticsearch-on-ubuntu-22-04
+  
+3) set security features to off
+
+4) the indices mapping is as follow by name legaldocs
+    {
+      "settings": {
+          "index":{
+        "number_of_shards": 5,
+        "number_of_replicas": 3
+          }
+      },
+      "mappings": {
+        "properties": {
+          "url": { "type": "text", "index": false },
+          "domain": { "type": "text" },
+          "date_crawled": { "type": "date" },
+          "web_page": { "type": "text" }
+        }
+      }
+    }
+    // {
+    //   "settings": {
+    //     "analysis": {
+    //       "analyzer": {
+    //         "domain_analyzer": {
+    //           "tokenizer": "domain_tokenizer"
+    //         }
+    //       },
+    //       "tokenizer": {
+    //         "domain_tokenizer": {
+    //           "type": "pattern",
+    //           "pattern": "."
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
