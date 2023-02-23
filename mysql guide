@@ -1,6 +1,6 @@
 create database by name legaldocs
 
-add table law_urls and blog_urls
+add table law_urls , blog_urls and irrelevant_urls
 
 create table law_urls(
  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -8,6 +8,19 @@ create table law_urls(
  country VARCHAR(2),
  priority TINYINT NOT NULL,
  date_crawled TIMESTAMP DEFAULT NULL,
+ 
+ UNIQUE (url)
+)
+
+add downloadable_doc_urls table
+
+create table downloadable_doc_urls(
+ id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ url VARCHAR(400) NOT NULL,
+ domain VARCHAR(200) NOT NULL,
+ country VARCHAR(2),
+ priority TINYINT NOT NULL,
+ is_downloaded BOOLEAN DEFAULT true,
  
  UNIQUE (url)
 )
