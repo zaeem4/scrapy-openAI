@@ -7,37 +7,38 @@ install elastic search through below link
   
 3) set security features to off
 
-4) the indices mapping is as follow by name legaldocs
+4) the indices mapping is as follow by name legaldata
+    PUT /legaldata
     {
       "settings": {
-          "index":{
-        "number_of_shards": 5,
-        "number_of_replicas": 3
-          }
+            "index": {
+                "number_of_shards": 2,
+                "number_of_replicas": 1
+            },
+            "analysis": {
+              "analyzer": {
+                "domain_analyzer": {
+                  "tokenizer": "domain_tokenizer"
+                }
+              },
+              "tokenizer": {
+                "domain_tokenizer": {
+                  "type": "pattern",
+                  "pattern": "."
+                }
+              }
+            }
       },
       "mappings": {
         "properties": {
           "url": { "type": "text", "index": false },
-          "domain": { "type": "text" },
+          "domain": { "type": "text", "analyzer":"domain_analyzer" },
           "date_crawled": { "type": "date" },
           "web_page": { "type": "text" }
         }
       }
     }
-    // {
-    //   "settings": {
-    //     "analysis": {
-    //       "analyzer": {
-    //         "domain_analyzer": {
-    //           "tokenizer": "domain_tokenizer"
-    //         }
-    //       },
-    //       "tokenizer": {
-    //         "domain_tokenizer": {
-    //           "type": "pattern",
-    //           "pattern": "."
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+    
+5) crete /legaldata/_doc/{id}
+
+6) curl -XGET -H 'Content-type: application/json' <host>:9200/_cluster/allocation/explain -d '{ "index": ".kibana", "shard": 0, "primary": true }'
