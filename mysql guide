@@ -24,3 +24,14 @@ create table downloadable_doc_urls(
  
  UNIQUE (url)
 )
+
+add failed_urls table
+
+create table failed_urls(
+ id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ url VARCHAR(400) NOT NULL,
+ type VARCHAR(50) NOT NULL,
+ failed_at TIMESTAMP DEFAULT NULL,
+ 
+ UNIQUE (url)
+)
