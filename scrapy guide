@@ -7,3 +7,13 @@ its a paid version so in review
 
 follow link for scrapy-playwrite for js
   https://scrapeops.io/python-scrapy-playbook/scrapy-playwright/
+
+manual scrap code
+
+  x=$$("a[target='naf']")
+  list = []; for(i=0;i<x.length;i++){list.push(x[i].getAttribute("href"))}
+
+  list2=[]
+  for item in list:
+      list2.append((f"https://elaws.moj.gov.ae/{item}", "ae", 1))
+  print(list2)
