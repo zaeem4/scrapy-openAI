@@ -34,6 +34,7 @@ install elastic search through below link
           "url": { "type": "text", "index": false },
           "domain": { "type": "text", "analyzer":"domain_analyzer" },
           "date_crawled": { "type": "date" },
+          "isProcessed": {"type":"boolean"},
           "web_page": { "type": "text" }
         }
       }
