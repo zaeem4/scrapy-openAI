@@ -5,7 +5,7 @@ add table law_urls , blog_urls and irrelevant_urls
 create table law_urls(
  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
  url VARCHAR(400) NOT NULL,
- country VARCHAR(2),
+ country VARCHAR(6),
  priority TINYINT NOT NULL,
  date_crawled TIMESTAMP DEFAULT NULL,
  
@@ -18,7 +18,7 @@ create table downloadable_doc_urls(
  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
  url VARCHAR(400) NOT NULL,
  domain VARCHAR(200) NOT NULL,
- country VARCHAR(2),
+ country VARCHAR(6),
  priority TINYINT NOT NULL,
  is_downloaded BOOLEAN DEFAULT true,
  
