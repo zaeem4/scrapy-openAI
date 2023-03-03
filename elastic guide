@@ -40,6 +40,44 @@ install elastic search through below link
       }
     }
     
-5) crete /legaldata/_doc/{id}
+5) another indices as follow for legalembedding
+    PUT /legalembedding
+    {
+      "settings": {
+        "index": {
+          "number_of_shards": 2,
+          "number_of_replicas": 1
+        },
+        "analysis": {
+          "analyzer": {
+            "domain_analyzer": {
+              "tokenizer": "domain_tokenizer"
+            }
+          },
+          "tokenizer": {
+            "domain_tokenizer": {
+              "type": "pattern",
+              "pattern": "."
+            }
+          }
+        }
+      },
+      "mappings": {
+        "properties": {
+          "domain": {
+            "type": "text",
+            "analyzer": "domain_analyzer"
+          },
+          "date_embedded": {
+            "type": "date"
+          },
+          "embedding": {
+            "type": "dense_vector",
+            "dims":"1536"
+          }
+        }
+      }
+    }
+
 
 6) curl -XGET -H 'Content-type: application/json' <host>:9200/_cluster/allocation/explain -d '{ "index": ".kibana", "shard": 0, "primary": true }'
