@@ -71,6 +71,10 @@ install elastic search through below link
           "date_embedded": {
             "type": "date"
           },
+          "n_tokens": {
+            "type": "integer",
+            "index":false
+          },
           "embedding": {
             "type": "dense_vector",
             "dims":"1536"
