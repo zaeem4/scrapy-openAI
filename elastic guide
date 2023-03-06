@@ -87,3 +87,17 @@ install elastic search through below link
 
 
 6) curl -XGET -H 'Content-type: application/json' <host>:9200/_cluster/allocation/explain -d '{ "index": ".kibana", "shard": 0, "primary": true }'
+
+important 
+POST /legaldata/_update_by_query?pretty
+{
+    "query" : {
+        "match_all":{} 
+        
+    },
+    "script" : {
+        "inline" : "ctx._source.isProcessed = params.value",
+        "params" : {"value" : false}
+    }
+}
+
