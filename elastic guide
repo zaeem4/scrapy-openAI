@@ -77,7 +77,9 @@ install elastic search through below link
           },
           "embedding": {
             "type": "dense_vector",
-            "dims":"1536"
+            "dims":"1536",
+            "index": true,
+            "similarity": "cosine" 
           }
         }
       }
