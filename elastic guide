@@ -64,6 +64,9 @@ install elastic search through below link
       },
       "mappings": {
         "properties": {
+          "url":{
+            "type":"text"
+          },
           "domain": {
             "type": "text",
             "analyzer": "domain_analyzer"
@@ -77,9 +80,7 @@ install elastic search through below link
           },
           "embedding": {
             "type": "dense_vector",
-            "dims":"1536",
-            "index": true,
-            "similarity": "cosine" 
+            "dims":"1536"
           }
         }
       }
